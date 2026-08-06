@@ -13,10 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssociacaoRouteImport } from './routes/associacao'
 import { Route as CantosRouteImport } from './routes/cantos'
 import { Route as CaravanasRouteImport } from './routes/caravanas'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as JogosRouteImport } from './routes/jogos'
 import { Route as LojaRouteImport } from './routes/loja'
 import { Route as NoticiasRouteImport } from './routes/noticias'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as SobreRouteImport } from './routes/sobre'
 
 const IndexRoute = IndexRouteImport.update({
@@ -39,6 +41,11 @@ const CaravanasRoute = CaravanasRouteImport.update({
   path: '/caravanas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GaleriaRoute = GaleriaRouteImport.update({
   id: '/galeria',
   path: '/galeria',
@@ -59,6 +66,11 @@ const NoticiasRoute = NoticiasRouteImport.update({
   path: '/noticias',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
@@ -70,10 +82,12 @@ export interface FileRoutesByFullPath {
   '/associacao': typeof AssociacaoRoute
   '/cantos': typeof CantosRoute
   '/caravanas': typeof CaravanasRoute
+  '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/jogos': typeof JogosRoute
   '/loja': typeof LojaRoute
   '/noticias': typeof NoticiasRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
@@ -81,10 +95,12 @@ export interface FileRoutesByTo {
   '/associacao': typeof AssociacaoRoute
   '/cantos': typeof CantosRoute
   '/caravanas': typeof CaravanasRoute
+  '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/jogos': typeof JogosRoute
   '/loja': typeof LojaRoute
   '/noticias': typeof NoticiasRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
@@ -93,10 +109,12 @@ export interface FileRoutesById {
   '/associacao': typeof AssociacaoRoute
   '/cantos': typeof CantosRoute
   '/caravanas': typeof CaravanasRoute
+  '/contato': typeof ContatoRoute
   '/galeria': typeof GaleriaRoute
   '/jogos': typeof JogosRoute
   '/loja': typeof LojaRoute
   '/noticias': typeof NoticiasRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
@@ -106,10 +124,12 @@ export interface FileRouteTypes {
     | '/associacao'
     | '/cantos'
     | '/caravanas'
+    | '/contato'
     | '/galeria'
     | '/jogos'
     | '/loja'
     | '/noticias'
+    | '/privacidade'
     | '/sobre'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -117,10 +137,12 @@ export interface FileRouteTypes {
     | '/associacao'
     | '/cantos'
     | '/caravanas'
+    | '/contato'
     | '/galeria'
     | '/jogos'
     | '/loja'
     | '/noticias'
+    | '/privacidade'
     | '/sobre'
   id:
     | '__root__'
@@ -128,10 +150,12 @@ export interface FileRouteTypes {
     | '/associacao'
     | '/cantos'
     | '/caravanas'
+    | '/contato'
     | '/galeria'
     | '/jogos'
     | '/loja'
     | '/noticias'
+    | '/privacidade'
     | '/sobre'
   fileRoutesById: FileRoutesById
 }
@@ -140,10 +164,12 @@ export interface RootRouteChildren {
   AssociacaoRoute: typeof AssociacaoRoute
   CantosRoute: typeof CantosRoute
   CaravanasRoute: typeof CaravanasRoute
+  ContatoRoute: typeof ContatoRoute
   GaleriaRoute: typeof GaleriaRoute
   JogosRoute: typeof JogosRoute
   LojaRoute: typeof LojaRoute
   NoticiasRoute: typeof NoticiasRoute
+  PrivacidadeRoute: typeof PrivacidadeRoute
   SobreRoute: typeof SobreRoute
 }
 
@@ -177,6 +203,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaravanasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/galeria': {
       id: '/galeria'
       path: '/galeria'
@@ -205,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticiasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sobre': {
       id: '/sobre'
       path: '/sobre'
@@ -220,10 +260,12 @@ const rootRouteChildren: RootRouteChildren = {
   AssociacaoRoute: AssociacaoRoute,
   CantosRoute: CantosRoute,
   CaravanasRoute: CaravanasRoute,
+  ContatoRoute: ContatoRoute,
   GaleriaRoute: GaleriaRoute,
   JogosRoute: JogosRoute,
   LojaRoute: LojaRoute,
   NoticiasRoute: NoticiasRoute,
+  PrivacidadeRoute: PrivacidadeRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
