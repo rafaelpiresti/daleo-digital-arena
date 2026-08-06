@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssociacaoRouteImport } from './routes/associacao'
+import { Route as CantosRouteImport } from './routes/cantos'
 import { Route as CaravanasRouteImport } from './routes/caravanas'
+import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as JogosRouteImport } from './routes/jogos'
+import { Route as LojaRouteImport } from './routes/loja'
 import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as SobreRouteImport } from './routes/sobre'
 
@@ -26,14 +29,29 @@ const AssociacaoRoute = AssociacaoRouteImport.update({
   path: '/associacao',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CantosRoute = CantosRouteImport.update({
+  id: '/cantos',
+  path: '/cantos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CaravanasRoute = CaravanasRouteImport.update({
   id: '/caravanas',
   path: '/caravanas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JogosRoute = JogosRouteImport.update({
   id: '/jogos',
   path: '/jogos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LojaRoute = LojaRouteImport.update({
+  id: '/loja',
+  path: '/loja',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NoticiasRoute = NoticiasRouteImport.update({
@@ -50,16 +68,22 @@ const SobreRoute = SobreRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/associacao': typeof AssociacaoRoute
+  '/cantos': typeof CantosRoute
   '/caravanas': typeof CaravanasRoute
+  '/galeria': typeof GaleriaRoute
   '/jogos': typeof JogosRoute
+  '/loja': typeof LojaRoute
   '/noticias': typeof NoticiasRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/associacao': typeof AssociacaoRoute
+  '/cantos': typeof CantosRoute
   '/caravanas': typeof CaravanasRoute
+  '/galeria': typeof GaleriaRoute
   '/jogos': typeof JogosRoute
+  '/loja': typeof LojaRoute
   '/noticias': typeof NoticiasRoute
   '/sobre': typeof SobreRoute
 }
@@ -67,23 +91,46 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/associacao': typeof AssociacaoRoute
+  '/cantos': typeof CantosRoute
   '/caravanas': typeof CaravanasRoute
+  '/galeria': typeof GaleriaRoute
   '/jogos': typeof JogosRoute
+  '/loja': typeof LojaRoute
   '/noticias': typeof NoticiasRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/associacao' | '/caravanas' | '/jogos' | '/noticias' | '/sobre'
+    | '/'
+    | '/associacao'
+    | '/cantos'
+    | '/caravanas'
+    | '/galeria'
+    | '/jogos'
+    | '/loja'
+    | '/noticias'
+    | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/associacao' | '/caravanas' | '/jogos' | '/noticias' | '/sobre'
+  to:
+    | '/'
+    | '/associacao'
+    | '/cantos'
+    | '/caravanas'
+    | '/galeria'
+    | '/jogos'
+    | '/loja'
+    | '/noticias'
+    | '/sobre'
   id:
     | '__root__'
     | '/'
     | '/associacao'
+    | '/cantos'
     | '/caravanas'
+    | '/galeria'
     | '/jogos'
+    | '/loja'
     | '/noticias'
     | '/sobre'
   fileRoutesById: FileRoutesById
@@ -91,8 +138,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssociacaoRoute: typeof AssociacaoRoute
+  CantosRoute: typeof CantosRoute
   CaravanasRoute: typeof CaravanasRoute
+  GaleriaRoute: typeof GaleriaRoute
   JogosRoute: typeof JogosRoute
+  LojaRoute: typeof LojaRoute
   NoticiasRoute: typeof NoticiasRoute
   SobreRoute: typeof SobreRoute
 }
@@ -113,6 +163,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssociacaoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cantos': {
+      id: '/cantos'
+      path: '/cantos'
+      fullPath: '/cantos'
+      preLoaderRoute: typeof CantosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/caravanas': {
       id: '/caravanas'
       path: '/caravanas'
@@ -120,11 +177,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaravanasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/jogos': {
       id: '/jogos'
       path: '/jogos'
       fullPath: '/jogos'
       preLoaderRoute: typeof JogosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loja': {
+      id: '/loja'
+      path: '/loja'
+      fullPath: '/loja'
+      preLoaderRoute: typeof LojaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/noticias': {
@@ -147,8 +218,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssociacaoRoute: AssociacaoRoute,
+  CantosRoute: CantosRoute,
   CaravanasRoute: CaravanasRoute,
+  GaleriaRoute: GaleriaRoute,
   JogosRoute: JogosRoute,
+  LojaRoute: LojaRoute,
   NoticiasRoute: NoticiasRoute,
   SobreRoute: SobreRoute,
 }
