@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssociacaoRouteImport } from './routes/associacao'
+import { Route as CaravanasRouteImport } from './routes/caravanas'
 import { Route as JogosRouteImport } from './routes/jogos'
+import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as SobreRouteImport } from './routes/sobre'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +21,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssociacaoRoute = AssociacaoRouteImport.update({
+  id: '/associacao',
+  path: '/associacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaravanasRoute = CaravanasRouteImport.update({
+  id: '/caravanas',
+  path: '/caravanas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JogosRoute = JogosRouteImport.update({
   id: '/jogos',
   path: '/jogos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasRoute = NoticiasRouteImport.update({
+  id: '/noticias',
+  path: '/noticias',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SobreRoute = SobreRouteImport.update({
@@ -31,31 +49,51 @@ const SobreRoute = SobreRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/associacao': typeof AssociacaoRoute
+  '/caravanas': typeof CaravanasRoute
   '/jogos': typeof JogosRoute
+  '/noticias': typeof NoticiasRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/associacao': typeof AssociacaoRoute
+  '/caravanas': typeof CaravanasRoute
   '/jogos': typeof JogosRoute
+  '/noticias': typeof NoticiasRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/associacao': typeof AssociacaoRoute
+  '/caravanas': typeof CaravanasRoute
   '/jogos': typeof JogosRoute
+  '/noticias': typeof NoticiasRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/jogos' | '/sobre'
+  fullPaths:
+    '/' | '/associacao' | '/caravanas' | '/jogos' | '/noticias' | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/jogos' | '/sobre'
-  id: '__root__' | '/' | '/jogos' | '/sobre'
+  to: '/' | '/associacao' | '/caravanas' | '/jogos' | '/noticias' | '/sobre'
+  id:
+    | '__root__'
+    | '/'
+    | '/associacao'
+    | '/caravanas'
+    | '/jogos'
+    | '/noticias'
+    | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssociacaoRoute: typeof AssociacaoRoute
+  CaravanasRoute: typeof CaravanasRoute
   JogosRoute: typeof JogosRoute
+  NoticiasRoute: typeof NoticiasRoute
   SobreRoute: typeof SobreRoute
 }
 
@@ -68,11 +106,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/associacao': {
+      id: '/associacao'
+      path: '/associacao'
+      fullPath: '/associacao'
+      preLoaderRoute: typeof AssociacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/caravanas': {
+      id: '/caravanas'
+      path: '/caravanas'
+      fullPath: '/caravanas'
+      preLoaderRoute: typeof CaravanasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/jogos': {
       id: '/jogos'
       path: '/jogos'
       fullPath: '/jogos'
       preLoaderRoute: typeof JogosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias': {
+      id: '/noticias'
+      path: '/noticias'
+      fullPath: '/noticias'
+      preLoaderRoute: typeof NoticiasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sobre': {
@@ -87,7 +146,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssociacaoRoute: AssociacaoRoute,
+  CaravanasRoute: CaravanasRoute,
   JogosRoute: JogosRoute,
+  NoticiasRoute: NoticiasRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
